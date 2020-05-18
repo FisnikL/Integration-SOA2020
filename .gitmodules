@@ -1,0 +1,3 @@
+[submodule "Logging-and-Monitoring"]
+	path = Logging-and-Monitoring
+	url = https://github.com/FisnikL/Logging-and-Monitoring.git
