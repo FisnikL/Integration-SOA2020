@@ -1,3 +1,6 @@
 [submodule "Logging-and-Monitoring"]
 	path = Logging-and-Monitoring
 	url = https://github.com/FisnikL/Logging-and-Monitoring.git
+[submodule "soa-service-registry-discovery"]
+	path = soa-service-registry-discovery
+	url = https://github.com/vblazhes/soa-service-registry-discovery.git
