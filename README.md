@@ -50,9 +50,14 @@
   - Group 8:  
 
 - Ports:
-  - Grafana: 3000
+  - Grafana: 3001
   - Elasticsearch: 9200, 9300
   - Kibana: 5601
   - Prometheus: 9090
   - Logstash: 9600, 9500
   - Consul: 8300, 8400, 8500
+  - Emq: 8080
+  - Kong: 8000, 8001
+  - Konga: 1337
+  - Keycloak: 8180
+  - Users: 3000
