@@ -88,8 +88,8 @@ services:
   emqx:
     image: emqx/emqx:latest
     volumes:
-      - ./soa-mqtt/emqx-data:/opt/emqx/data
-      - ./soa-mqtt/emqx-lib:/opt/emqx/lib
+#      - ./soa-mqtt/emqx-data:/opt/emqx/data
+#      - ./soa-mqtt/emqx-lib:/opt/emqx/lib
       - ./soa-mqtt/emqx/http/emqx_auth_http.conf:/opt/emqx/etc/plugins/emqx_auth_http.conf
     ports:
 #      - 1883:1883
@@ -241,3 +241,22 @@ services:
       SERVICE_3000_CHECK_TIMEOUT: "1s"
       SERVICE_3000_CHECK_DEREGISTER_AFTER: "10m"
     restart: on-failure
+
+  postgres-im:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: instancemanager
+    volumes:
+      - ./SOA/db/init:/docker-entrypoint-initdb.d
+      - ./SOA/db/data:/var/lib/postgresql/data
+    restart: always
+
+  instancemanager:
+    build:
+      context: ./SOA
+    ports:
+      - 30001:5000
+    depends_on:
+      - postgres-im
+      - emqx
+    restart: always

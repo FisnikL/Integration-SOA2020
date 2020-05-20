@@ -61,3 +61,4 @@
   - Konga: 1337
   - Keycloak: 8180
   - Users: 3000
+  - Instance-manager: 30001
