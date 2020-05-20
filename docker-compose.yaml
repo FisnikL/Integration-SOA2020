@@ -260,3 +260,11 @@ services:
       - postgres-im
       - emqx
     restart: always
+
+  clientapp1:
+    build:
+      context: ./ServerHelper-ClientApp
+    depends_on:
+      - emqx
+    environment:
+      - CLIENTAPP_USER_ID=client1
