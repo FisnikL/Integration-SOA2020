@@ -16,3 +16,7 @@
 [submodule "referral"]
 	path = referral
 	url = https://github.com/kirca97/referral.git
+
+[submodule "SOA"]
+	path = SOA
+	url = https://github.com/markozanov/SOA

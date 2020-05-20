@@ -48,3 +48,11 @@
   - Group 6: https://github.com/kirca97/referral
   - Group 7:  
   - Group 8:  
+
+- Ports:
+  - Grafana: 3000
+  - Elasticsearch: 9200, 9300
+  - Kibana: 5601
+  - Prometheus: 9090
+  - Logstash: 9600, 9500
+  - Consul: 8300, 8400, 8500
