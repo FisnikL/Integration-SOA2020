@@ -67,8 +67,8 @@ services:
       - elasticsearch
 
   consul:
-    image: consul
-    container_name: consul:1.6.5
+    image: consul:1.6.5
+    container_name: consul
     ports:
       - "8300:8300"
       - "8400:8400"
