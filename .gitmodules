@@ -16,3 +16,6 @@
 [submodule "SOA"]
 	path = SOA
 	url = https://github.com/markozanov/SOA
+[submodule "kong-konga-keycloak"]
+	path = kong-konga-keycloak
+	url = https://github.com/DimoskiBojan/kong-konga-keycloak
