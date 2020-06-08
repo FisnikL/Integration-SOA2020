@@ -4,9 +4,6 @@
 [submodule "soa-service-registry-discovery"]
 	path = soa-service-registry-discovery
 	url = https://github.com/vblazhes/soa-service-registry-discovery.git
-[submodule "kong-konga-keycloak"]
-	path = kong-konga-keycloak
-	url = https://github.com/DimoskiBojan/kong-konga-keycloak.git
 [submodule "ServerHelper-ClientApp"]
 	path = ServerHelper-ClientApp
 	url = https://github.com/NHristovski/ServerHelper-ClientApp/
