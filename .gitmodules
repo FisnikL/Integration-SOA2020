@@ -19,3 +19,6 @@
 [submodule "SOA"]
 	path = SOA
 	url = https://github.com/markozanov/SOA
+[submodule "soa-payments"]
+	path = soa-payments
+	url = https://gitlab.com/gjorgjinac/soa-payments.git
