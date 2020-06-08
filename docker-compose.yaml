@@ -287,36 +287,36 @@ services:
     ports:
       - 25000:5050
 
-#  ps_postgres:
-#    image: postgres
-#    container_name: ps_postgres
-#    volumes:
-#      - ./soa-payments/ps-data:/var/lib/postgresql/data
-#      - ./soa-payments/init/init.sql:/docker-entrypoint-initdb.d/init.sql
-#    ports:
-#      - 5432:5432
-#    environment:
-#      - POSTGRES_DB=payment_service
-#      - POSTGRES_USER=ps_user
-#      - POSTGRES_PASSWORD=ps_123
-##    networks:
-##      - my-network123
+  ps_postgres:
+    image: postgres
+    container_name: ps_postgres
+    volumes:
+      - ./soa-payments/ps-data:/var/lib/postgresql/data
+      - ./soa-payments/init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=payment_service
+      - POSTGRES_USER=ps_user
+      - POSTGRES_PASSWORD=ps_123
+#    networks:
+#      - my-network123
 
-#  payments:
-#    build:
-#      context: ./soa-payments
-#      dockerfile: Dockerfile
-#    environment:
-#      - REFERRALS_IP=referral
-#      - REFERRALS_PORT=5050
-#      - USERS_IP=users
-#      - USERS_PORT=80
-#      - PAYMENTS_PORT=8000
-#      - SMTP_PORT=465
-#      - DATABASE_URI=postgresql://ps_user:ps_123@ps_postgres/payment_service
-#      - ME=springconfirm@gmail.com
-#      - MP=springauth
-#      - SPK=rg3CN5pLXoI00LvYfHmV75vcp84TP5vwgAGqz
-#      - SRK=t7ttJYlmMNY00sZLL2IZGgxwHX2ajDoYhLlcn
-#    ports:
-#      - 25001:8000
+  payments:
+    build:
+      context: ./soa-payments
+      dockerfile: Dockerfile
+    environment:
+      - REFERRALS_IP=referral
+      - REFERRALS_PORT=5050
+      - USERS_IP=users
+      - USERS_PORT=80
+      - PAYMENTS_PORT=8000
+      - SMTP_PORT=465
+      - DATABASE_URI=postgresql://ps_user:ps_123@ps_postgres/payment_service
+      - ME=springconfirm@gmail.com
+      - MP=springauth
+      - SPK=rg3CN5pLXoI00LvYfHmV75vcp84TP5vwgAGqz
+      - SRK=t7ttJYlmMNY00sZLL2IZGgxwHX2ajDoYhLlcn
+    ports:
+      - 25001:8000
