@@ -7,15 +7,9 @@
 [submodule "ServerHelper-ClientApp"]
 	path = ServerHelper-ClientApp
 	url = https://github.com/NHristovski/ServerHelper-ClientApp/
-[submodule "soa-mqtt"]
-	path = soa-mqtt
-	url = https://github.com/vblazhes/soa-mqtt
 [submodule "referral"]
 	path = referral
 	url = https://github.com/kirca97/referral.git
-[submodule "SOA"]
-	path = SOA
-	url = https://github.com/markozanov/SOA
 [submodule "kong-konga-keycloak"]
 	path = kong-konga-keycloak
 	url = https://github.com/DimoskiBojan/kong-konga-keycloak
