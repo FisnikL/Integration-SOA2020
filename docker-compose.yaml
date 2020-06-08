@@ -3,12 +3,12 @@ services:
 
   prometheus:
     container_name: prometheus-svc
-    image: prom/prometheus:master
+    image: prom/prometheus:v2.18.1
     ports:
       - "9090:9090"
     command: --config.file=/etc/prometheus/prometheus.yaml
     volumes:
-      - ../Logging-and-Monitoring/prometheus.yaml:/etc/prometheus/prometheus.yaml
+      - ./Logging-and-Monitoring/prometheus.yaml:/etc/prometheus/prometheus.yaml
 
   grafana:
     image: grafana/grafana:6.7.0
@@ -24,7 +24,7 @@ services:
     depends_on:
       - grafana
     volumes:
-      - ../Logging-and-Monitoring/grafana-data:/grafana
+      - ./Logging-and-Monitoring/grafana-data:/grafana
     command: >
       /bin/sh -c "
         apk add --no-cache curl
@@ -49,7 +49,7 @@ services:
     ports:
       - "5601:5601"
     volumes:
-      - ../Logging-and-Monitoring/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./Logging-and-Monitoring/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
     depends_on:
       - elasticsearch
 
@@ -60,15 +60,15 @@ services:
       - "9600:9600"
       - "9500:9500"
     volumes:
-      - ../Logging-and-Monitoring/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-      - ../Logging-and-Monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ../Logging-and-Monitoring/logs:/usr/share/logstash/logs
+      - ./Logging-and-Monitoring/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./Logging-and-Monitoring/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./Logging-and-Monitoring/logs:/usr/share/logstash/logs
     depends_on:
       - elasticsearch
 
   consul:
     image: consul
-    container_name: consul
+    container_name: consul:1.6.5
     ports:
       - "8300:8300"
       - "8400:8400"
@@ -86,11 +86,11 @@ services:
       - consul
 
   emqx:
-    image: emqx/emqx:v4.1-rc.2
+    image: emqx/emqx:v4.1.0
     volumes:
 #      - ./soa-mqtt/emqx-data:/opt/emqx/data
 #      - ./soa-mqtt/emqx-lib:/opt/emqx/lib
-      - ../soa-mqtt/emqx/http/emqx_auth_http.conf:/opt/emqx/etc/plugins/emqx_auth_http.conf
+      - ./soa-mqtt/emqx/http/emqx_auth_http.conf:/opt/emqx/etc/plugins/emqx_auth_http.conf
     ports:
 #      - 1883:1883
 #      - 8083:8083
@@ -115,7 +115,7 @@ services:
   kong-db:
     image: postgres:11-alpine
     volumes:
-      - ../kong-konga-keycloak/kong-datastore:/var/lib/postgresql/data
+      - ./kong-konga-keycloak/kong-datastore:/var/lib/postgresql/data
 #    networks:
 #      - kong-net
 #    ports:
@@ -128,7 +128,7 @@ services:
     restart: on-failure
 
   kong-session-store:
-    image: redis
+    image: redis:alpine3.12
 #    ports:
 #      - 6379:6379
     restart: on-failure
@@ -185,7 +185,7 @@ services:
   keycloak-db:
     image: postgres:11-alpine
     volumes:
-      - ../kong-konga-keycloak/keycloak-datastore:/var/lib/postgresql/data
+      - ./kong-konga-keycloak/keycloak-datastore:/var/lib/postgresql/data
 #    networks:
 #      - keycloak-net
 #    ports:
@@ -247,13 +247,13 @@ services:
     environment:
       POSTGRES_PASSWORD: instancemanager
     volumes:
-      - ../SOA/db/init:/docker-entrypoint-initdb.d
-      - ../SOA/db/data:/var/lib/postgresql/data
+      - ./SOA/db/init:/docker-entrypoint-initdb.d
+      - ./SOA/db/data:/var/lib/postgresql/data
     restart: always
 
   instancemanager:
     build:
-      context: ../SOA
+      context: ./SOA
     ports:
       - 30001:5000
     depends_on:
@@ -278,7 +278,7 @@ services:
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password12345'
     volumes:
-      - ../referral/db:/var/lib/mysql
+      - ./referral/db:/var/lib/mysql
   referral:
     build:
       context: ./referral
@@ -287,20 +287,20 @@ services:
     ports:
       - 25000:5050
 
-  ps_postgres:
-    image: postgres
-    container_name: ps_postgres
-    volumes:
-      - ../soa-payments/ps-data:/var/lib/postgresql/data
-      - ../soa-payments/init/init.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB=payment_service
-      - POSTGRES_USER=ps_user
-      - POSTGRES_PASSWORD=ps_123
-#    networks:
-#      - my-network123
+#  ps_postgres:
+#    image: postgres
+#    container_name: ps_postgres
+#    volumes:
+#      - ./soa-payments/ps-data:/var/lib/postgresql/data
+#      - ./soa-payments/init/init.sql:/docker-entrypoint-initdb.d/init.sql
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_DB=payment_service
+#      - POSTGRES_USER=ps_user
+#      - POSTGRES_PASSWORD=ps_123
+##    networks:
+##      - my-network123
 
 #  payments:
 #    build:
