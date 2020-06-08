@@ -13,3 +13,6 @@
 [submodule "kong-konga-keycloak"]
 	path = kong-konga-keycloak
 	url = https://github.com/DimoskiBojan/kong-konga-keycloak
+[submodule "soa-mqtt"]
+	path = soa-mqtt
+	url = https://github.com/vblazhes/soa-mqtt
