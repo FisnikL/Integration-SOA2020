@@ -47,7 +47,7 @@
     - https://github.com/vblazhes/soa-mqtt
   - Group 6: https://github.com/kirca97/referral
   - Group 7:  
-  - Group 8: https://github.com/markozanov/SOA/tree/d76f7ce317d25b256b148eb8bfa3ba915ccf7975
+  - Group 8: https://github.com/markozanov/SOA
 
 - Ports:
   - Grafana: 3001
